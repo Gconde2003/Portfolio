@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Duloc Blender</title>
+	<!-- Bootstrap CSS -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+	<!-- AOS CSS -->
+	<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+	<link rel="icon" type="image/png" href="images/favicon.png">
+
+
+<!-- CSS -->
+	<style>
+		@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@300;400;500&display=swap');
+
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+			font-family: "Poppins", sans-serif;
+		}
+		.hero {
+			background: #444444;
+			color: white;
+			padding: 45vh 0;
+			text-align: center;
+		}
+
+		h1, h2, h3, h4, h5, h6 {
+			font-family: 'Poppins', Helvetica, sans-serif; /* Fuente para títulos */
+			font-weight: 600; /* Negrita ligera */
+			margin-bottom: 1rem;
+		}
+
+		#inicio{
+			margin-top: 15px;
+		}
+
+	/*---- Color ----*/
+
+		body {
+			background-color: #333; /* Fondo gris oscuro */
+			color: #f0f0f0; /* Texto claro para contraste */
+		}
+
+		.navbar {
+			background-color: #222; /* Fondo gris oscuro para la barra de navegación */
+			color: white;
+		}
+
+		.nav-link, .navbar-brand{
+			color: white;
+		}
+
+		.nav-link:hover, .navbar-brand:hover{
+			color: #888;
+		}
+
+		footer {
+			background-color: #222; /* Fondo más oscuro para el pie de página */
+		}
+
+		#gallery {
+			background-color: #333; /* Fondo gris oscuro para la galería */
+			color: #fff; /* Asegura que el texto sea legible */
+		}
+
+		#about{
+			background-color: #444;
+		}
+
+		#themeToggleBtn{
+			color: white;
+		}
+
+		#themeToggleBtn:hover{
+			color: #d1bdb3;
+		}
+
+		.btncollapse{
+			background-color: #444;
+		}
+
+		.filter-btn:first-child{
+			color: white;
+		}
+		.filter-btn:first-child:hover{
+			color: #999;
+		}
+		
+		/*---Light Mode---*/
+		/*.light-mode *,.light-mode #about, .light-mode #hero, .light-mode #gallery, *{
+			transition: background-color 0.5s ease;*/
+		}
+		.light-mode {
+			background-color: #d1bdb3; /* Fondo claro */
+			color: #333; /* Texto oscuro */
+		}
+
+		/* Para el hero */
+		.light-mode #hero {
+			background-color: #F0E4D8; /* Fondo claro */
+			color: #333; /* Texto oscuro */
+		}
+
+		/* Para la sección Sobre mí */
+		.light-mode #about {
+			background-color: #F0E4D8;
+			color: #444;
+		}
+
+		/* Para la galería */
+		.light-mode #gallery {
+			background-color: #d1bdb3; /* Fondo blanco */
+			color: #000; /* Texto negro */
+		}
+
+		/* General del cuerpo */
+		.light-mode body {
+			background-color: #d1bdb3;
+			color: #333;
+		}
+
+		/* Opcional: Ajustar las tarjetas de "Programas que utilizo" */
+		.light-mode .cuadro .delante {
+			background-color: #d1bdb3;
+			color: #333;
+		}
+
+		.light-mode .cuadro .detras {
+			background-color: #d9d9d9;
+			filter: opacity(60%);
+		}
+
+		.light-mode .navbar {
+			background-color: #eaeaea; /* Navbar clara */
+		}
+
+		.light-mode footer {
+			background-color: #f0f0f0; /* Footer claro */
+			color: #333;
+		}
+
+		.light-mode .filter-btn:nth-child(2), .light-mode .filter-btn:nth-child(3), .light-mode .filter-btn:nth-child(4) {
+			background-color: #F0E4D8;
+			color: #333;
+			border: 1px solid #ccc;
+		}
+
+		.light-mode .filter-btn:nth-child(2):hover, .light-mode .filter-btn:nth-child(3):hover, .light-mode .filter-btn:nth-child(4):hover {
+			background-color: #f7efe8;
+
+		}
+
+		.light-mode #studiesText {
+			background-color: #d1bdb3; /* Fondo claro */
+			color: #333; /* Texto oscuro */
+		}
+
+		.light-mode .studies-box {
+			background-color: #d1bdb3; /* Fondo blanco */
+			color: #333; /* Texto oscuro */
+		}
+
+		.light-mode .nav-link, .light-mode .navbar-brand{
+			color: black;
+		}
+
+		.light-mode .nav-link:hover, .light-mode .navbar-brand:hover{
+			color: #D1BDB3;
+		}
+
+		.light-mode #themeToggleBtn{
+			color: black;
+		}
+
+		.light-mode #themeToggleBtn:hover{
+			color: #d1bdb3;
+		}
+
+		.light-mode .btncollapse{
+			background-color: #d1bdb3;
+		}
+
+		.light-mode #inicio{
+			background-color: #F0E4D8;
+			color: black;
+			border: none;
+		}
+
+		.light-mode .filter-btn:first-child{
+			color: black;
+		}
+		.light-mode .filter-btn:first-child:hover{
+			color: #F0E4D8;
+		}
+		/*---Fin Light Mode---*/
+		.hero{
+			height: auto;
+		}
+
+		/*---H3 Animación de ola*/
+		h3 span {
+			display: inline-block;
+			animation: wave 3s infinite;
+		}
+			h3 span:nth-child(1) { animation-delay: 0s; }
+			h3 span:nth-child(2) { animation-delay: 0.1s; }
+			h3 span:nth-child(3) { animation-delay: 0.2s; }
+			h3 span:nth-child(4) { animation-delay: 0.3s; }
+			h3 span:nth-child(5) { animation-delay: 0.4s; }
+			h3 span:nth-child(6) { animation-delay: 0.5s; }
+			h3 span:nth-child(7) { animation-delay: 0.6s; }
+			h3 span:nth-child(8) { animation-delay: 0.7s; }
+			h3 span:nth-child(9) { animation-delay: 0.8s; }
+			h3 span:nth-child(10) { animation-delay: 0.9s; }
+			h3 span:nth-child(11) { animation-delay: 1.0s; }
+			h3 span:nth-child(12) { animation-delay: 1.1s; }
+		@keyframes wave {
+			0%, 100% { transform: translateY(0); }
+			50% { transform: translateY(-15px); }
+		}
+	/*---Fin Clothes---*/
+
+	/*---- Fin Color ----*/
+
+	/*Footer*/
+		footer {
+			background-color: #222;
+			color: white;
+			padding: 20px 0;
+		}
+		footer a {
+			color: #6c63ff;
+			text-decoration: none;
+		}
+		footer a:hover {
+			text-decoration: underline;
+		}
+	/*Fin footer*/
+
+	/*---Galeria---*/
+		.gallery img {
+			border-radius: 10px;
+		}
+		.skills .progress-bar {
+			background-color: #6c63ff;
+		}
+
+		#gallery .filter-item {
+			position: relative;
+			overflow: hidden;
+		}
+
+		#gallery .filter-item img {
+			transition: transform 0.3s, opacity 0.3s;
+			width: 100%;
+			height: auto;
+		}
+
+		#gallery .filter-item:hover img {
+			transform: scale(1.1);
+			opacity: 0.6;
+			filter: blur(2px);
+		}
+
+		#gallery .filter-item .overlay-text {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			color: white;
+			font-size: 1.2rem;
+			text-align: center;
+			opacity: 0;
+			transition: opacity 0.3s;
+			font-weight: bold;
+		}
+
+		#gallery .filter-item:hover .overlay-text {
+			opacity: 1;
+		}
+	/*---Fin Galeria---*/
+
+			/*---Ampliar Galeria---*/
+	.image-modal {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: rgba(0, 0, 0, 0.8);
+		display: none;
+		justify-content: center;
+		align-items: center;
+		z-index: 1000;
+		animation: fadeIn 0.3s ease-in-out;
+	}
+
+	.image-modal img {
+		margin-top: 80px;
+		max-width: 85%;
+		max-height: 85%;
+		border-radius: 10px;
+	}
+
+	/* Animaciones */
+	@keyframes fadeIn {
+		0% {
+			opacity: 0;
+		}
+		100% {
+			opacity: 1;
+		}
+	}
+
+	@keyframes fadeOut {
+		0% {
+			opacity: 1;
+		}
+		100% {
+			opacity: 0;
+		}
+	}
+	/*Fin Amplio Galeria*/
+
+
+	/*---------MEDIA---------*/
+		@media (max-width: 768px) {
+			.image-centered {
+				position: absolute;
+				top: 70%; /* Posición*/
+				left: 50%; /* Posición horizontal */
+				transform: translate(-50%, -50%); /* Ajusta la posición al centro exacto */
+				width: auto; /* Asegura que mantenga su proporción */
+				height: auto;
+			}
+
+			/*Ajuste para que quepan 2 fotos en tamaños pequeños*/
+			#gallery .row {
+				flex-direction: row; /* Flujo horizontal */
+			}
+
+			#gallery .filter-item {
+				flex: 0 0 50%; /* Cada imagen 50% ancho */
+				padding: 0.4rem;
+			}
+
+			#gallery img {
+				width: 100%;
+				height: auto; /* Mantener las proporciones */
+			}
+
+			.logo{
+				max-height: 20px;
+			}
+
+			.clothes{
+				display: none;
+			}
+
+			/*Las imagenes de la galeria se ajustarán para que quepan 2*/
+			#gallery .row {
+				flex-direction: row; /* Asegura que las imágenes sigan un flujo horizontal */
+			}
+
+			#gallery .filter-item {
+				flex: 0 0 50%; /* Cada imagen ocupará el 50% del ancho */
+				padding: 0.5rem;
+			}
+
+			#gallery img {
+				width: 100%;
+				height: auto; /* Mantener las proporciones */
+			}
+
+			.carga{
+
+				display: block;
+			}
+
+			.hero{
+				height: auto;
+			}
+
+			#overlayImage{
+				min-height: 50vh;
+				min-width: 50vh;
+			}
+
+		/*---MOVILES---*/
+		@media (max-width: 425px){
+
+			.image-centered {
+				position: absolute;
+				top: 70%; /* Posición*/
+				left: 50%; /* Posición horizontal */
+				transform: translate(-50%, -50%); /* Ajusta la posición al centro exacto */
+				width: auto; /* Asegura que mantenga la proporción */
+				height: auto;
+				height: 50%;
+			}
+
+			.logo{
+				max-height: 14px;
+			}
+
+			.clothes{
+				display: none;
+			}
+
+			.hero{
+				height: auto;
+			}
+			#overlayImage{
+				min-height: 30vh;
+				min-width: 30vh;
+			}
+
+	/*Fin media*/
+
+
+	</style>
+</head>
+<body>
+	<header>
+
+<!-- Navbar/Barra de navegación fija -->
+	<nav class="navbar navbar-expand-lg  fixed-top py-4" data-aos="fade-down">
+		<div class="container">
+		<!--<a class="navbar-brand" href="#">Mi Portafolio</a>-->
+		<img src="images/logo.png" class="col-md-3 logo">
+
+		<!-- Boton para menu para pantallas pequeñas -->
+		<button class="navbar-toggler btncollapse" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+		<span class="navbar-toggler-icon"></span>
+		</button>
+		<!-- Menu -->
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav ms-auto">
+					<li class="nav-item"><strong><a class="nav-link" href="#hero">VIDEO</a></strong></li>
+					<li class="nav-item"><strong><a class="nav-link" href="#about">DESCRIPCIÓN</a></strong></li>
+					<li class="nav-item"><strong><a class="nav-link" href="#gallery">GALERIA</a></strong></li>
+					<li class="nav-item"><strong><a class="nav-link" href="index.html">VOLVER</a></strong></li>
+					<li class="nav-item">
+						<button id="themeToggleBtn" class="btn fixed-style ms-2">
+							<i class="fa-solid fa-sun"></i>
+						</button>
+					</li>
+
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+<!-- Sobre Mi - Barra lineal -->
+	<section id="hero" class="hero py-5" data-aos="zoom-in">
+		<div class="container my-5">
+		<h1 class="text-center">Escena Duloc</h1>
+		<div class="ratio ratio-16x9">
+			<iframe width="560" height="315" src="https://www.youtube.com/embed/cDSw5tn0-6A?si=nJZ-9dMBFAVOuwGs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    	</div>
+  </div>
+	</section>
+
+		<section id="about" class="py-5" data-aos="fade-up" data-aos-once="true">
+
+		<div class="container text-center mb-4">
+			<h3>Duloc en Blender</h3>
+			<b>Mi Segunda Animación - 30 días aprox.</b>
+			<p class="mt-4">Este video es mi intento de recrear una escena de Duloc de Shrek para una actividad de clase. Tenía que evitar que se pareciese al original pero debía mantener la esencia y personalidad de los personajes. A pesar de tener poco tiempo para crear esta actividad, me divertí mucho experimentando con el diseño de personajes, escenarios y texturizado.</p>
+
+
+			
+		</div>
+	</section>
+
+<!-- Galeria -->
+	<section id="gallery" class="py-5">
+		<div class="container">
+			<h2 class="text-center mb-4" data-aos="fade-up" data-aos-once="true">Galería</h2>
+
+			<div class="row g-1">
+				<div class="col-md-3 filter-item">
+					<img src="images/2dulocstylized.png" class="img-fluid mediafoto" data-aos="zoom-in" alt="Proyecto 1">
+					<div class="overlay-text">Ampliar
+					</div>
+				</div>
+				<div class="col-md-3 filter-item">
+					<img src="images/srec2.png" class="img-fluid mediafoto" data-aos="zoom-in" data-aos-delay="100" alt="Proyecto 2">
+					<div class="overlay-text">Ampliar
+					</div>
+				</div>
+				<div class="col-md-3 filter-item">
+					<img src="images/munecosduloc.png" class="img-fluid mediafoto" data-aos="zoom-in" data-aos-delay="200" alt="Proyecto 3">
+					<div class="overlay-text">Ampliar
+					</div>
+				</div>
+				<div class="col-md-3 filter-item">
+					<img src="images/srec3.png" class="img-fluid mediafoto" data-aos="zoom-in" data-aos-delay="300" alt="Proyecto 4">
+					<div class="overlay-text">Ampliar
+					</div>
+				</div>
+				<!--
+				<div class="col-md-3 filter-item" data-category="2d">
+					<img src="RPMI_PORTFOLIO/FOTOS/retratoanadearmas.png" class="img-fluid mediafoto" data-aos="zoom-in" alt="Proyecto 5">
+					<div class="overlay-text">Retrato Ana de Armas</div>
+				</div>
+				<div class="col-md-3 filter-item" data-category="anim">
+					<img src="https://via.placeholder.com/350" class="img-fluid mediafoto" data-aos="zoom-in" data-aos-delay="100" alt="Proyecto 6">
+					<div class="overlay-text">Texto centrado</div>
+				</div>
+				<div class="col-md-3 filter-item" data-category="3d">
+					<img src="https://via.placeholder.com/350" class="img-fluid mediafoto" data-aos="zoom-in" data-aos-delay="200" alt="Proyecto 7">
+					<div class="overlay-text">Texto centrado</div>
+				</div>
+				<div class="col-md-3 filter-item" data-category="2d">
+					<img src="https://via.placeholder.com/350" class="img-fluid mediafoto" data-aos="zoom-in" data-aos-delay="300" alt="Proyecto 8">
+					<div class="overlay-text">Texto centrado</div>
+				</div>
+				-->
+				<a href="index.html">
+					<button id="inicio" class="btn btn-secondary col-12">Volver al Inicio</button>
+				</a>
+			</div>
+			
+		</div>
+	</section>
+
+
+ <!-- Footer -->
+	<footer class="text-center" data-aos="fade-up" data-aos-duration="300" data-aos-once="true">
+		<div class="container">
+			<!-- Redes Sociales -->
+			<p>Sígueme en:</p>
+			<a href="https://kopiri.artstation.com/" class="me-3">ArtStation</a>
+			<a href="https://www.youtube.com/@Kopiriart" class="me-3">YouTube</a>
+			<a href="https://www.linkedin.com/in/gonzalo-conde-310279341">LinkedIn</a>
+		</div>
+	</footer>
+
+<!-- Scripts -->
+	<!-- Bootstrap JS -->
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+	<!-- AOS JS -->
+		<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+		<script>
+			AOS.init();
+		</script>
+
+	<!-- GSAP JS para animaciones -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.3.1/gsap.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.3.1/ScrollTrigger.min.js"></script>
+		<script src="./script.js"></script>
+
+	<!-- Script para galeria tamaño movil, Numeros pares apareceran con AOS-delay 100, impares con 200 -->
+		<script>
+			function updateAOSDelayForProjects() {
+				if (window.innerWidth <= 768) {
+					const items = document.querySelectorAll('.filter-item .mediafoto');
+					items.forEach((item, index) => {
+						if (index % 2 === 0) { 
+							// Índices pares: proyectos 1, 3, 5, 7 (0, 2, 4, 6 en base 0)
+							item.setAttribute('data-aos-delay', '100');
+						} else {
+							// Índices impares: proyectos 2, 4, 6, 8 (1, 3, 5, 7 en base 0)
+							item.setAttribute('data-aos-delay', '200');
+						}
+					});
+				}
+			}
+
+			// Ejecutar la función al cargar la página
+			document.addEventListener('DOMContentLoaded', updateAOSDelayForProjects);
+		</script>
+
+	<!-- Script Cambio de Color -->
+		<script>
+		document.getElementById("themeToggleBtn").addEventListener("click", function () {
+			document.body.classList.toggle("light-mode");
+
+			const btnIcon = this.querySelector("i");
+			const logo = document.querySelector("img.logo");
+
+			if (document.body.classList.contains("light-mode")) {
+				btnIcon.classList.remove("fa-sun");
+				btnIcon.classList.add("fa-moon");
+				logo.src = "images/logo1.png"; // Cambia al logotipo para el tema claro
+			} else {
+				btnIcon.classList.remove("fa-moon");
+				btnIcon.classList.add("fa-sun");
+				logo.src = "images/logo.png"; // Cambia al logotipo original
+			}
+		});
+		</script>
+
+	<!--Ampliar foto-->
+<script>
+	document.addEventListener("DOMContentLoaded", function () {
+	// Seleccionamos las últimas cuatro imágenes de la galería
+	const galleryImages = document.querySelectorAll("#gallery .mediafoto");
+	const lastFourImages = Array.from(galleryImages).slice(-4);
+
+	// Creamos el modal para mostrar las imágenes
+	const modal = document.createElement("div");
+	modal.classList.add("image-modal");
+	document.body.appendChild(modal);
+
+	const modalImage = document.createElement("img");
+	modal.appendChild(modalImage);
+
+	// Función para cerrar el modal con animación
+	function closeModal() {
+		modal.style.animation = "fadeOut 0.3s ease-in-out";
+		setTimeout(() => {
+			modal.style.display = "none";
+			modal.style.animation = ""; // Resetea la animación para futuros clics
+		}, 300);
+	}
+
+	// Añadimos eventos a las últimas cuatro imágenes
+	lastFourImages.forEach(image => {
+		image.addEventListener("click", function () {
+			modalImage.src = this.src; // Asignamos la imagen clicada al modal
+			modal.style.display = "flex";
+			modal.style.animation = "fadeIn 0.3s ease-in-out";
+		});
+	});
+
+	// Cerramos el modal al hacer clic en él o fuera de la imagen
+	modal.addEventListener("click", closeModal);
+});
+</script>
+		
+</body>
+</html>
