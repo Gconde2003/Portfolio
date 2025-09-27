@@ -838,7 +838,81 @@
 <script>
 	document.addEventListener("DOMContentLoaded", function () {
 	// Seleccionamos las últimas cuatro imágenes de la galería
-	const galleryImages = document.querySelectorAll("#gallery #gallery1 #gallery2 .mediafoto");
+	const galleryImages = document.querySelectorAll("#gallery .mediafoto");
+	const lastFourImages = Array.from(galleryImages).slice(-4);
+
+	// Creamos el modal para mostrar las imágenes
+	const modal = document.createElement("div");
+	modal.classList.add("image-modal");
+	document.body.appendChild(modal);
+
+	const modalImage = document.createElement("img");
+	modal.appendChild(modalImage);
+
+	// Función para cerrar el modal con animación
+	function closeModal() {
+		modal.style.animation = "fadeOut 0.3s ease-in-out";
+		setTimeout(() => {
+			modal.style.display = "none";
+			modal.style.animation = ""; // Resetea la animación para futuros clics
+		}, 300);
+	}
+
+	// Añadimos eventos a las últimas cuatro imágenes
+	lastFourImages.forEach(image => {
+		image.addEventListener("click", function () {
+			modalImage.src = this.src; // Asignamos la imagen clicada al modal
+			modal.style.display = "flex";
+			modal.style.animation = "fadeIn 0.3s ease-in-out";
+		});
+	});
+
+	// Cerramos el modal al hacer clic en él o fuera de la imagen
+	modal.addEventListener("click", closeModal);
+});
+</script>
+
+<script>
+	document.addEventListener("DOMContentLoaded", function () {
+	// Seleccionamos las últimas cuatro imágenes de la galería
+	const galleryImages = document.querySelectorAll("#gallery1 .mediafoto");
+	const lastFourImages = Array.from(galleryImages).slice(-4);
+
+	// Creamos el modal para mostrar las imágenes
+	const modal = document.createElement("div");
+	modal.classList.add("image-modal");
+	document.body.appendChild(modal);
+
+	const modalImage = document.createElement("img");
+	modal.appendChild(modalImage);
+
+	// Función para cerrar el modal con animación
+	function closeModal() {
+		modal.style.animation = "fadeOut 0.3s ease-in-out";
+		setTimeout(() => {
+			modal.style.display = "none";
+			modal.style.animation = ""; // Resetea la animación para futuros clics
+		}, 300);
+	}
+
+	// Añadimos eventos a las últimas cuatro imágenes
+	lastFourImages.forEach(image => {
+		image.addEventListener("click", function () {
+			modalImage.src = this.src; // Asignamos la imagen clicada al modal
+			modal.style.display = "flex";
+			modal.style.animation = "fadeIn 0.3s ease-in-out";
+		});
+	});
+
+	// Cerramos el modal al hacer clic en él o fuera de la imagen
+	modal.addEventListener("click", closeModal);
+});
+</script>
+
+<script>
+	document.addEventListener("DOMContentLoaded", function () {
+	// Seleccionamos las últimas cuatro imágenes de la galería
+	const galleryImages = document.querySelectorAll("#gallery2 .mediafoto");
 	const lastFourImages = Array.from(galleryImages).slice(-4);
 
 	// Creamos el modal para mostrar las imágenes
@@ -874,6 +948,7 @@
 		
 </body>
 </html>
+
 
 
 
