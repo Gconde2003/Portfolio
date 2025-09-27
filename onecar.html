@@ -835,7 +835,7 @@
 		</script>
 
 	<!--Ampliar foto-->
-<script>
+<!--<script>
 	document.addEventListener("DOMContentLoaded", function () {
 	// Seleccionamos las últimas cuatro imágenes de la galería
 	const galleryImages = document.querySelectorAll("#gallery .mediafoto");
@@ -944,10 +944,54 @@
 	// Cerramos el modal al hacer clic en él o fuera de la imagen
 	modal.addEventListener("click", closeModal);
 });
+</script>-->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  // Función genérica para crear modal en una galería
+  function setupGalleryModal(gallerySelector) {
+    const galleryImages = document.querySelectorAll(`${gallerySelector} .mediafoto`);
+    const lastFourImages = Array.from(galleryImages).slice(-4);
+
+    // Creamos el modal (uno por galería, independiente)
+    const modal = document.createElement("div");
+    modal.classList.add("image-modal");
+    document.body.appendChild(modal);
+
+    const modalImage = document.createElement("img");
+    modal.appendChild(modalImage);
+
+    // Función para cerrar modal con animación
+    function closeModal() {
+      modal.style.animation = "fadeOut 0.3s ease-in-out";
+      setTimeout(() => {
+        modal.style.display = "none";
+        modal.style.animation = "";
+      }, 300);
+    }
+
+    // Asignamos eventos a las últimas 4 imágenes
+    lastFourImages.forEach(image => {
+      image.addEventListener("click", function () {
+        modalImage.src = this.src;
+        modal.style.display = "flex";
+        modal.style.animation = "fadeIn 0.3s ease-in-out";
+      });
+    });
+
+    // Cerrar modal al hacer clic fuera
+    modal.addEventListener("click", closeModal);
+  }
+
+  // Llamamos la función para cada galería
+  setupGalleryModal("#gallery");
+  setupGalleryModal("#gallery1");
+  setupGalleryModal("#gallery2");
+});
 </script>
 		
 </body>
 </html>
+
 
 
 
