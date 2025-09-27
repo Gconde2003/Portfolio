@@ -68,6 +68,16 @@
 			color: #fff; /* Asegura que el texto sea legible */
 		}
 
+		#gallery1 {
+			background-color: #333; /* Fondo gris oscuro para la galería */
+			color: #fff; /* Asegura que el texto sea legible */
+		}
+
+		#gallery2 {
+			background-color: #444; /* Fondo gris oscuro para la galería */
+			color: #fff; /* Asegura que el texto sea legible */
+		}
+
 		#about{
 			background-color: #333;
 		}
@@ -123,6 +133,16 @@
 		/* Para la galería */
 		.light-mode #gallery {
 			background-color: #d1bdb3; /* Fondo blanco */
+			color: #000; /* Texto negro */
+		}
+
+		.light-mode #gallery1 {
+			background-color: #d1bdb3; /* Fondo blanco */
+			color: #000; /* Texto negro */
+		}
+
+		.light-mode #gallery2 {
+			background-color: #F0E4D8; /* Fondo blanco */
 			color: #000; /* Texto negro */
 		}
 
@@ -254,11 +274,29 @@
 		.gallery img {
 			border-radius: 10px;
 		}
+
+		.gallery1 img {
+			border-radius: 10px;
+		}
+
+		.gallery2 img {
+			border-radius: 10px;
+		}
 		.skills .progress-bar {
 			background-color: #6c63ff;
 		}
 
 		#gallery .filter-item {
+			position: relative;
+			overflow: hidden;
+		}
+
+		#gallery1 .filter-item {
+			position: relative;
+			overflow: hidden;
+		}
+
+		#gallery2 .filter-item {
 			position: relative;
 			overflow: hidden;
 		}
@@ -269,7 +307,31 @@
 			height: auto;
 		}
 
+		#gallery1 .filter-item img {
+			transition: transform 0.3s, opacity 0.3s;
+			width: 100%;
+			height: auto;
+		}
+
+		#gallery2 .filter-item img {
+			transition: transform 0.3s, opacity 0.3s;
+			width: 100%;
+			height: auto;
+		}
+
 		#gallery .filter-item:hover img {
+			transform: scale(1.1);
+			opacity: 0.6;
+			filter: blur(2px);
+		}
+
+		#gallery1 .filter-item:hover img {
+			transform: scale(1.1);
+			opacity: 0.6;
+			filter: blur(2px);
+		}
+
+		#gallery2 .filter-item:hover img {
 			transform: scale(1.1);
 			opacity: 0.6;
 			filter: blur(2px);
@@ -288,7 +350,41 @@
 			font-weight: bold;
 		}
 
+		#gallery1 .filter-item .overlay-text {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			color: white;
+			font-size: 1.2rem;
+			text-align: center;
+			opacity: 0;
+			transition: opacity 0.3s;
+			font-weight: bold;
+		}
+
+		#gallery2 .filter-item .overlay-text {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			color: white;
+			font-size: 1.2rem;
+			text-align: center;
+			opacity: 0;
+			transition: opacity 0.3s;
+			font-weight: bold;
+		}
+
 		#gallery .filter-item:hover .overlay-text {
+			opacity: 1;
+		}
+
+		#gallery1 .filter-item:hover .overlay-text {
+			opacity: 1;
+		}
+
+		#gallery2 .filter-item:hover .overlay-text {
 			opacity: 1;
 		}
 	/*---Fin Galeria---*/
@@ -352,12 +448,40 @@
 				flex-direction: row; /* Flujo horizontal */
 			}
 
+			#gallery1 .row {
+				flex-direction: row; /* Flujo horizontal */
+			}
+
+			#gallery2 .row {
+				flex-direction: row; /* Flujo horizontal */
+			}
+
 			#gallery .filter-item {
 				flex: 0 0 50%; /* Cada imagen 50% ancho */
 				padding: 0.4rem;
 			}
 
+			#gallery1 .filter-item {
+				flex: 0 0 50%; /* Cada imagen 50% ancho */
+				padding: 0.4rem;
+			}
+
+			#gallery2 .filter-item {
+				flex: 0 0 50%; /* Cada imagen 50% ancho */
+				padding: 0.4rem;
+			}
+
 			#gallery img {
+				width: 100%;
+				height: auto; /* Mantener las proporciones */
+			}
+
+			#gallery1 img {
+				width: 100%;
+				height: auto; /* Mantener las proporciones */
+			}
+
+			#gallery2 img {
 				width: 100%;
 				height: auto; /* Mantener las proporciones */
 			}
@@ -375,12 +499,40 @@
 				flex-direction: row; /* Asegura que las imágenes sigan un flujo horizontal */
 			}
 
+			#gallery1 .row {
+				flex-direction: row; /* Asegura que las imágenes sigan un flujo horizontal */
+			}
+
+			#gallery2 .row {
+				flex-direction: row; /* Asegura que las imágenes sigan un flujo horizontal */
+			}
+
 			#gallery .filter-item {
 				flex: 0 0 50%; /* Cada imagen ocupará el 50% del ancho */
 				padding: 0.5rem;
 			}
 
+			#gallery1 .filter-item {
+				flex: 0 0 50%; /* Cada imagen ocupará el 50% del ancho */
+				padding: 0.5rem;
+			}
+
+			#gallery2 .filter-item {
+				flex: 0 0 50%; /* Cada imagen ocupará el 50% del ancho */
+				padding: 0.5rem;
+			}
+
 			#gallery img {
+				width: 100%;
+				height: auto; /* Mantener las proporciones */
+			}
+
+			#gallery1 img {
+				width: 100%;
+				height: auto; /* Mantener las proporciones */
+			}
+
+			#gallery2 img {
 				width: 100%;
 				height: auto; /* Mantener las proporciones */
 			}
@@ -558,7 +710,7 @@
 
 
 
-		<section id="gallery" class="py-5">
+		<section id="gallery2" class="py-5">
 				<!-- <div class="container"> -->
 			<div class="container-fluid my-5 px-0" style="max-width:75%; margin:0 auto;">
 				<!--<h2 class="text-center mb-4" data-aos="fade-up" data-aos-once="true">Other renders</h2>-->
@@ -722,6 +874,7 @@
 		
 </body>
 </html>
+
 
 
 
